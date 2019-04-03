@@ -17,7 +17,9 @@ class App extends StatelessWidget {
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return DefaultTabController(
+      length:3,
+      child:Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         leading:IconButton(
@@ -34,8 +36,20 @@ class Home extends StatelessWidget {
           ),
         ],
         elevation: 5.0,
+        bottom:TabBar(tabs: <Widget>[
+          Tab(icon:Icon(Icons.send)),
+          Tab(icon:Icon(Icons.signal_cellular_no_sim)),
+          Tab(icon:Icon(Icons.flight_takeoff)),
+        ],)
       ),
-      body: null,
+      body: TabBarView(
+        children: <Widget>[
+          Icon(Icons.send,size: 128.0,color:Colors.black12),
+          Icon(Icons.signal_cellular_no_sim,size: 128.0,color:Colors.black12),
+          Icon(Icons.flight_takeoff,size: 128.0,color:Colors.black12),
+        ],
+      ),
+    ),
     );
   }
 }

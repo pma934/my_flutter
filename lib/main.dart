@@ -36,7 +36,12 @@ class Home extends StatelessWidget {
           ),
         ],
         elevation: 5.0,
-        bottom:TabBar(tabs: <Widget>[
+        bottom:TabBar(
+          unselectedLabelColor: Colors.black38,
+          indicatorColor: Colors.black54,
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorWeight: 1.0,
+          tabs: <Widget>[
           Tab(icon:Icon(Icons.send)),
           Tab(icon:Icon(Icons.signal_cellular_no_sim)),
           Tab(icon:Icon(Icons.flight_takeoff)),

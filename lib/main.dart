@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'demo/listview_demo.dart';
 import 'demo/hello_demo.dart';
+import 'demo/drawer_demo.dart';
+import 'demo/botton_navigation_bar_demo.dart';
 
 void main() => runApp(App());
 
@@ -11,11 +13,9 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: Home(),
         theme: ThemeData(
-          primaryColor: Colors.yellow,
-          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-          splashColor: Colors.white70
-        )
-      );
+            primaryColor: Colors.yellow,
+            highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+            splashColor: Colors.white70));
   }
 }
 
@@ -23,45 +23,41 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length:3,
-      child:Scaffold(
-      backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        leading:IconButton(
-          icon:Icon(Icons.menu),
-          tooltip:'导航',
-          onPressed: ()=>debugPrint('按下了导航按钮'),
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+            title: Text('zxz'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.search),
+                tooltip: '搜索',
+                onPressed: () => debugPrint('按下了搜索按钮'),
+              ),
+            ],
+            elevation: 5.0,
+            bottom: TabBar(
+              unselectedLabelColor: Colors.black38,
+              indicatorColor: Colors.black54,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 1.0,
+              tabs: <Widget>[
+                Tab(icon: Icon(Icons.send)),
+                Tab(icon: Icon(Icons.signal_cellular_no_sim)),
+                Tab(icon: Icon(Icons.flight_takeoff)),
+              ],
+            )),
+        body: TabBarView(
+          children: <Widget>[
+            ListViewDemo(),
+            Icon(Icons.signal_cellular_no_sim,
+                size: 128.0, color: Colors.black12),
+            Icon(Icons.flight_takeoff, size: 128.0, color: Colors.black12),
+          ],
         ),
-        title: Text('zxz'),
-        actions:<Widget>[
-          IconButton(
-            icon:Icon(Icons.search),
-            tooltip:'搜索',
-            onPressed: ()=>debugPrint('按下了搜索按钮'),
-          ),
-        ],
-        elevation: 5.0,
-        bottom:TabBar(
-          unselectedLabelColor: Colors.black38,
-          indicatorColor: Colors.black54,
-          indicatorSize: TabBarIndicatorSize.label,
-          indicatorWeight: 1.0,
-          tabs: <Widget>[
-          Tab(icon:Icon(Icons.send)),
-          Tab(icon:Icon(Icons.signal_cellular_no_sim)),
-          Tab(icon:Icon(Icons.flight_takeoff)),
-        ],)
+        drawer: DrawerDemo(),
+        bottomNavigationBar: BottomNavigationBarDemo(),
       ),
-      body: TabBarView(
-        children: <Widget>[
-          Icon(Icons.send,size: 128.0,color:Colors.black12),
-          Icon(Icons.signal_cellular_no_sim,size: 128.0,color:Colors.black12),
-          Icon(Icons.flight_takeoff,size: 128.0,color:Colors.black12),
-        ],
-      ),
-    ),
     );
   }
 }
-
-

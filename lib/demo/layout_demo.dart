@@ -7,6 +7,7 @@ class LayoutDemo extends StatelessWidget {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
+        StackDemo()
       ],
     ));
   }

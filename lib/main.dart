@@ -4,6 +4,7 @@ import 'demo/hello_demo.dart';
 import 'demo/drawer_demo.dart';
 import 'demo/botton_navigation_bar_demo.dart';
 import 'demo/basic_demo.dart';
+import 'demo/layout_demo.dart';
 
 void main() => runApp(App());
 
@@ -54,7 +55,8 @@ class Home extends StatelessWidget {
             // Icon(Icons.signal_cellular_no_sim,
             //     size: 128.0, color: Colors.black12),
             BasicDemo(),
-            Icon(Icons.flight_takeoff, size: 128.0, color: Colors.black12),
+            // Icon(Icons.flight_takeoff, size: 128.0, color: Colors.black12),
+            LayoutDemo(),
           ],
         ),
         drawer: DrawerDemo(),

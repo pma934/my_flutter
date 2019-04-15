@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-class FromDemo extends StatelessWidget {
+class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('FormDemo'),
+        elevation: 3.0,
+      ),
       body: Theme(
         data: Theme.of(context).copyWith(
           primaryColor: Colors.red,
@@ -13,7 +17,7 @@ class FromDemo extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                RegisterFrom(),
+                RegisterForm(),
               ],
             )),
       ),
@@ -21,12 +25,12 @@ class FromDemo extends StatelessWidget {
   }
 }
 
-class RegisterFrom extends StatefulWidget {
+class RegisterForm extends StatefulWidget {
   @override
-  _RegisterFromState createState() => _RegisterFromState();
+  _RegisterFormState createState() => _RegisterFormState();
 }
 
-class _RegisterFromState extends State<RegisterFrom> {
+class _RegisterFormState extends State<RegisterForm> {
   final registerFormKey = GlobalKey<FormState>();
   String username, password;
   bool autovalidate = false;

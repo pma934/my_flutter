@@ -24,7 +24,7 @@ class App extends StatelessWidget {
         routes: {
           '/':(context) => Home(),
           '/about':(context) => Page(title: 'About'),
-          '/from':(context) => FromDemo(),
+          '/from':(context) => FormDemo(),
           '/mdc':(context) => MaterialComponents(),
         },
         theme: ThemeData(

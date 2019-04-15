@@ -12,7 +12,7 @@ class _SliderDemoState extends State<SliderDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('_WidgetDemo'),
+        title: Text('SliderDemo'),
         elevation: 0.0,
       ),
       body: Container(

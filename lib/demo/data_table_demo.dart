@@ -7,7 +7,7 @@ class DataTableDemo extends StatefulWidget {
 }
 
 class _DataTableDemoState extends State<DataTableDemo> {
-  int _sortColumnIndex = 0;
+  int _sortColumnIndex;
   bool _sortAscending = true;
   @override
   Widget build(BuildContext context) {

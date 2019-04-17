@@ -20,6 +20,8 @@ class StreamDemoHome extends StatefulWidget {
 }
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
+  StreamSubscription _streamDemoSubscription;
+
   @override
   void initState() {
     super.initState();
@@ -27,30 +29,63 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     print('Creat a stream');
     Stream<String> _streamDemo = Stream.fromFuture(fetchData());
     print('Start listening on a stream');
-    _streamDemo.listen(onData, onError: onError, onDone: onDone);
+    _streamDemoSubscription =
+        _streamDemo.listen(onData, onError: onError, onDone: onDone);
     print('initialize completed');
   }
 
+  //订阅 ：完成、 报错、 数据
   void onDone() {
     print('Done!');
   }
-
   void onError(error) {
     print('$error');
   }
-
   void onData(String data) {
     print('$data');
   }
+  //设置订阅状态：暂停、继续、取消
+  void _pauseStream(){
+    print('pause subscription');
+    _streamDemoSubscription.pause();
+  }
+  void _resumeStream(){
+    print('resume subscription');
+    _streamDemoSubscription.resume();
+  }
+  void _cancelStream(){
+    print('cancel subscription');
+    _streamDemoSubscription.cancel();
+  }
 
   Future<String> fetchData() async {
-    await Future.delayed((Duration(seconds: 3)));
+    await Future.delayed((Duration(seconds: 5)));
     //throw 'Something happend';
     return 'hello ~';
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Center(
+        child: Row(
+          mainAxisAlignment:MainAxisAlignment.center,
+          children: <Widget>[   
+            FlatButton(
+              child: Text('Pause'),
+              onPressed: _pauseStream,
+            ),
+            FlatButton(
+              child: Text('Resume'),
+              onPressed: _resumeStream,
+            ),
+            FlatButton(
+              child: Text('Cancel'),
+              onPressed: _cancelStream,
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

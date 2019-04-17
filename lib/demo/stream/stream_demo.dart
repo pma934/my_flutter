@@ -36,12 +36,13 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     print('Creat a stream');
     // Stream<String> _streamDemo = Stream.fromFuture(fetchData());
-    _streamDemo = StreamController<String>();
+    _streamDemo = StreamController.broadcast();  //多次订阅
     _sinkDemo = _streamDemo.sink;
 
     print('Start listening on a stream');
     _streamDemoSubscription =
         _streamDemo.stream.listen(onData, onError: onError, onDone: onDone);
+    _streamDemo.stream.listen(onDataTwo, onError: onError, onDone: onDone);
     print('initialize completed');
   }
 
@@ -56,6 +57,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   void onData(String data) {
     print('$data');
+  }
+
+  void onDataTwo(String data) {
+    print('noDataTwo:$data');
   }
 
   //设置订阅状态：暂停、继续、取消

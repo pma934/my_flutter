@@ -39,31 +39,31 @@ class Counter extends StatelessWidget {
     return ScopedModelDescendant<CounterModel>(
           builder:(context,_,model)=> ActionChip(
         label: Text('${model.count}'),
-        onPressed: model.increaseCount,
+        onPressed: model.resetCount,
       ),
     );
   }
 }
 
-class CounterProvider extends InheritedWidget {
-  final int count;
-  final VoidCallback increaseCount;
-  final Widget child;
+// class CounterProvider extends InheritedWidget {
+//   final int count;
+//   final VoidCallback increaseCount;
+//   final Widget child;
 
-  CounterProvider({
-    this.count,
-    this.increaseCount,
-    this.child,
-  }) : super(child: child);
+//   CounterProvider({
+//     this.count,
+//     this.increaseCount,
+//     this.child,
+//   }) : super(child: child);
 
-  static CounterProvider of(BuildContext context) =>
-      context.inheritFromWidgetOfExactType(CounterProvider);
+//   static CounterProvider of(BuildContext context) =>
+//       context.inheritFromWidgetOfExactType(CounterProvider);
 
-  @override
-  bool updateShouldNotify(CounterProvider oldWidget) {
-    return true;
-  }
-}
+//   @override
+//   bool updateShouldNotify(CounterProvider oldWidget) {
+//     return true;
+//   }
+// }
 
 class CounterModel extends Model{
   int _count = 0;
@@ -71,6 +71,11 @@ class CounterModel extends Model{
 
   void increaseCount(){
     _count +=1;
+    notifyListeners();  //
+  }
+
+  void resetCount(){
+    _count = 0;
     notifyListeners();  //
   }
 }

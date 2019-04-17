@@ -21,16 +21,25 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamSubscription _streamDemoSubscription;
+  StreamController<String> _streamDemo;
+
+  @override
+  void dispose() {
+    _streamDemo.close();
+    super.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
 
     print('Creat a stream');
-    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
+    // Stream<String> _streamDemo = Stream.fromFuture(fetchData());
+    _streamDemo = StreamController<String>();
+
     print('Start listening on a stream');
     _streamDemoSubscription =
-        _streamDemo.listen(onData, onError: onError, onDone: onDone);
+        _streamDemo.stream.listen(onData, onError: onError, onDone: onDone);
     print('initialize completed');
   }
 
@@ -38,24 +47,36 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   void onDone() {
     print('Done!');
   }
+
   void onError(error) {
     print('$error');
   }
+
   void onData(String data) {
     print('$data');
   }
+
   //设置订阅状态：暂停、继续、取消
-  void _pauseStream(){
+  void _pauseStream() {
     print('pause subscription');
     _streamDemoSubscription.pause();
   }
-  void _resumeStream(){
+
+  void _resumeStream() {
     print('resume subscription');
     _streamDemoSubscription.resume();
   }
-  void _cancelStream(){
+
+  void _cancelStream() {
     print('cancel subscription');
     _streamDemoSubscription.cancel();
+  }
+
+  void _addDataToStream() async {
+    print('Add data to stream');
+
+    String data = await fetchData();
+    _streamDemo.add(data);
   }
 
   Future<String> fetchData() async {
@@ -69,8 +90,12 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     return Container(
       child: Center(
         child: Row(
-          mainAxisAlignment:MainAxisAlignment.center,
-          children: <Widget>[   
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              child: Text('Add'),
+              onPressed: _addDataToStream,
+            ),
             FlatButton(
               child: Text('Pause'),
               onPressed: _pauseStream,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/demo/animation/animation_demo.dart';
 import 'package:flutter_app/demo/bloc/bloc_demo.dart';
 import 'package:flutter_app/demo/http/http_demo.dart';
 import 'package:flutter_app/demo/rxdart/rxdart_demo.dart';
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         //home: NavigatorDemo(),//Home(),
-        initialRoute: '/http',
+        initialRoute: '/animation',
         routes: {
           '/':(context) => Home(),
           '/about':(context) => Page(title: 'About'),
@@ -36,6 +37,7 @@ class App extends StatelessWidget {
           '/rxdart':(context) => RxDartDemo(),
           '/bloc':(context) => BlocDemo(),
           '/http':(context) => HttpDemo(),
+          '/animation':(context) => AnimationDemo(),
         },
         theme: ThemeData(
             primaryColor: Colors.yellow,

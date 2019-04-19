@@ -6,6 +6,7 @@ import 'package:flutter_app/demo/i18n/i18n_demo.dart';
 import 'package:flutter_app/demo/rxdart/rxdart_demo.dart';
 import 'package:flutter_app/demo/state/state_management_demo.dart';
 import 'package:flutter_app/demo/stream/stream_demo.dart';
+import 'package:flutter_app/demo/test/test_demo.dart';
 import 'demo/listview_demo.dart';
 import 'demo/hello_demo.dart';
 import 'demo/drawer_demo.dart';
@@ -44,7 +45,7 @@ class App extends StatelessWidget {
         ],
         debugShowCheckedModeBanner: false,
         //home: NavigatorDemo(),//Home(),
-        initialRoute: '/i18n',
+        initialRoute: '/test',
         routes: {
           '/': (context) => Home(),
           '/about': (context) => Page(title: 'About'),
@@ -57,6 +58,7 @@ class App extends StatelessWidget {
           '/http': (context) => HttpDemo(),
           '/animation': (context) => AnimationDemo(),
           '/i18n': (context) => I18nDemo(),
+          '/test': (context) => TestDemo(),
         },
         theme: ThemeData(
             primaryColor: Colors.yellow,

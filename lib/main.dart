@@ -18,7 +18,8 @@ import 'demo/navigator_demo.dart';
 import 'demo/form_demo.dart';
 import 'demo/material_components.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
+// import 'package:flutter_app/demo/i18n/map/zxz_demo_localizations.dart';
+import 'package:flutter_app/demo/i18n/intl/zxz_demo_localizations.dart';
 
 void main() => runApp(App());
 
@@ -26,37 +27,42 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      localizationsDelegates: [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: [
-        Locale('en','US'),
-        Locale('zh','CN'),
-      ],
+        locale: Locale('zh','CN'),
+        // locale: Locale('en', 'US'),
+        // localeResolutionCallback:
+        //     (Locale locale, Iterable<Locale> supportedLocales) {
+        //   return Locale('en', 'US');
+        // },
+        localizationsDelegates: [
+          ZxzDemoLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('en', 'US'),
+          Locale('zh', 'CN'),
+        ],
         debugShowCheckedModeBanner: false,
         //home: NavigatorDemo(),//Home(),
         initialRoute: '/i18n',
         routes: {
-          '/':(context) => Home(),
-          '/about':(context) => Page(title: 'About'),
-          '/from':(context) => FormDemo(),
-          '/mdc':(context) => MaterialComponents(),
-          '/state-management':(context) => StateManagementDemo(),
-          '/stream':(context) => StreamDemo(),
-          '/rxdart':(context) => RxDartDemo(),
-          '/bloc':(context) => BlocDemo(),
-          '/http':(context) => HttpDemo(),
-          '/animation':(context) => AnimationDemo(),
-          '/i18n':(context) => I18nDemo(),
+          '/': (context) => Home(),
+          '/about': (context) => Page(title: 'About'),
+          '/from': (context) => FormDemo(),
+          '/mdc': (context) => MaterialComponents(),
+          '/state-management': (context) => StateManagementDemo(),
+          '/stream': (context) => StreamDemo(),
+          '/rxdart': (context) => RxDartDemo(),
+          '/bloc': (context) => BlocDemo(),
+          '/http': (context) => HttpDemo(),
+          '/animation': (context) => AnimationDemo(),
+          '/i18n': (context) => I18nDemo(),
         },
         theme: ThemeData(
             primaryColor: Colors.yellow,
             highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
             splashColor: Colors.white70,
-            accentColor: Color.fromRGBO(3, 54, 255, 1.0)
-        )
-      );
+            accentColor: Color.fromRGBO(3, 54, 255, 1.0)));
   }
 }
 
@@ -97,7 +103,7 @@ class Home extends StatelessWidget {
             BasicDemo(),
             // Icon(Icons.flight_takeoff, size: 128.0, color: Colors.black12),
             LayoutDemo(),
-            SliverDemo(),//ViewDemo(),
+            SliverDemo(), //ViewDemo(),
           ],
         ),
         drawer: DrawerDemo(),

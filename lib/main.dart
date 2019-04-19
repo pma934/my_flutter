@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/demo/animation/animation_demo.dart';
 import 'package:flutter_app/demo/bloc/bloc_demo.dart';
 import 'package:flutter_app/demo/http/http_demo.dart';
+import 'package:flutter_app/demo/i18n/i18n_demo.dart';
 import 'package:flutter_app/demo/rxdart/rxdart_demo.dart';
 import 'package:flutter_app/demo/state/state_management_demo.dart';
 import 'package:flutter_app/demo/stream/stream_demo.dart';
@@ -16,6 +17,7 @@ import 'demo/sliver_demo.dart';
 import 'demo/navigator_demo.dart';
 import 'demo/form_demo.dart';
 import 'demo/material_components.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 
 void main() => runApp(App());
@@ -24,9 +26,17 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en','US'),
+        Locale('zh','CN'),
+      ],
         debugShowCheckedModeBanner: false,
         //home: NavigatorDemo(),//Home(),
-        initialRoute: '/animation',
+        initialRoute: '/i18n',
         routes: {
           '/':(context) => Home(),
           '/about':(context) => Page(title: 'About'),
@@ -38,6 +48,7 @@ class App extends StatelessWidget {
           '/bloc':(context) => BlocDemo(),
           '/http':(context) => HttpDemo(),
           '/animation':(context) => AnimationDemo(),
+          '/i18n':(context) => I18nDemo(),
         },
         theme: ThemeData(
             primaryColor: Colors.yellow,

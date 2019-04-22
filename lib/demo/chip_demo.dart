@@ -56,7 +56,7 @@ class _ChipDemoState extends State<ChipDemo> {
                     deleteIconColor: Colors.redAccent,
                     deleteButtonTooltipMessage: 'Remove this tag',
                   ),
-                  Divider(
+                  Divider(//第一条线
                     color: Colors.grey,
                     height: 32.0,
                     // indent: 32.0,
@@ -75,8 +75,8 @@ class _ChipDemoState extends State<ChipDemo> {
                       );
                     }).toList(),
                   ),
-                  Divider(
-                    color: Colors.grey,
+                  Divider( //第二条线
+                    color: Colors.red,
                     height: 32.0,
                     // indent: 32.0,
                   ),
@@ -97,8 +97,8 @@ class _ChipDemoState extends State<ChipDemo> {
                       );
                     }).toList(),
                   ),
-                  Divider(
-                    color: Colors.grey,
+                  Divider(//第三条线
+                    color: Colors.blue,
                     height: 32.0,
                     // indent: 32.0,
                   ),
@@ -124,7 +124,7 @@ class _ChipDemoState extends State<ChipDemo> {
                       );
                     }).toList(),
                   ),
-                  Divider(
+                  Divider(//第四条线
                     color: Colors.grey,
                     height: 32.0,
                     // indent: 32.0,

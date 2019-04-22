@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/demo/route/route_list_demo.dart';
 
 class BottomNavigationBarDemo extends StatefulWidget {
   @override
@@ -11,8 +12,11 @@ class _BottomNavigationBarDemoState extends State<BottomNavigationBarDemo> {
   int _currentIndex = 0;
 
   void _onTapHandler(int index) {
-    setState((){
+    setState(() {
       _currentIndex = index;
+      if (index == 2) {
+        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) => RouteListDemo()));
+      }
     });
   }
 
